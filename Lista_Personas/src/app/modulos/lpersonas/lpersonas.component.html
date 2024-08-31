@@ -1,0 +1,36 @@
+<!-- Botón para agregar un nuevo persona -->
+<button type="button" class="btn btn-primary" (click)="agregarpersona()" data-bs-toggle="modal" data-bs-target="#modalpersona">Agregar</button>
+
+<!-- Componente del modal para agregar o editar personas -->
+<app-modalpersonas
+  [modalid]="'modalPersona'"
+  [persona]="selectedPersona"
+  (eventoGuardar)="guardarPersona($event)">
+</app-modalpersonas>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Email</th>
+      <th>Telefono</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let persona of lpersonas">
+      <td>{{ persona.id }}</td>
+      <td>{{ persona.nombre | uppercase }}</td>
+      <td>{{ persona.edad }}</td>
+      <td>{{ persona.email }}</td>
+      <td>{{ persona.telefono}}</td>
+      <td>
+        <!-- Botón para seleccionar el persona para editar -->
+        <button type="button" class="btn btn-warning" (click)="selectPersona(persona)" data-bs-toggle="modal" data-bs-target="#modalpersona">Editar</button>
+        <!-- Botón para eliminar el persona -->
+        <button type="button" class="btn btn-danger" (click)="funcionEliminar(persona)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

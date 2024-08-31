@@ -1,0 +1,51 @@
+<div class="modal fade" id="{{modalid}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            {{ producto.productoid === 0 ? 'Agregar Producto' : 'Editar Producto' }}
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div id="divMensaje"></div>
+        <div class="modal-body">
+          <form (ngSubmit)="guardar()" #productoForm="ngForm">
+            <div class="mb-3">
+              <label for="product-name" class="col-form-label">Producto:</label>
+              <input type="text" name="product-name" [(ngModel)]="producto.producto" class="form-control" id="product-name" required>
+            </div>
+            <div class="mb-3">
+              <label for="product-model" class="col-form-label">Modelo:</label>
+              <input name="product-model" type="text" [(ngModel)]="producto.modelo" class="form-control" id="product-model" required>
+            </div>
+            <div class="mb-3">
+              <label for="product-supplier" class="col-form-label">Proveedor:</label>
+              <input name="product-supplier" type="text" [(ngModel)]="producto.proveedor" class="form-control" id="product-supplier" required>
+            </div>
+            <div class="mb-3">
+              <label for="product-price" class="col-form-label">Precio:</label>
+              <input name="product-price" type="number" [(ngModel)]="producto.precio" class="form-control" id="product-price" required>
+            </div>
+            <div class="mb-3">
+              <label for="product-stock" class="col-form-label">Stock:</label>
+              <input name="product-stock" type="number" [(ngModel)]="producto.stock" class="form-control" id="product-stock" required>
+            </div>
+            <div class="mb-3">
+              <label for="product-category" class="col-form-label">Categoría:</label>
+              <select name="product-category" [(ngModel)]="producto.categoria" class="form-control" id="product-category" required>
+                <option value="OC">Ocio</option>
+                <option value="VA">Varios</option>
+                <option value="HT">Salud</option>
+                <option value="CO">General</option>
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="btnCerrarModal" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" id="btnGuardar" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
